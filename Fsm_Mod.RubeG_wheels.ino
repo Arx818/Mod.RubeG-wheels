@@ -79,7 +79,6 @@ void customStateBehavior(uint8_t ledPin, unsigned long frequency, unsigned long 
     digitalWrite(ledPin, LOW);
     delay(250);
   }
-  currentState = IDLE_STATE;
 }
 
 void loop() {
@@ -112,9 +111,11 @@ void loop() {
       break;
     case CAR_ARRIVED_STATE:
       customStateBehavior(GREEN_LED_PIN, ARRIVED_FREQUENCY, millis());
+      currentState = IDLE_STATE;
       break;
     case ERROR_STATE:
       customStateBehavior(RED_LED_PIN, ERROR_FREQUENCY, millis());
+      currentState = IDLE_STATE;
       break;
   }
 }
